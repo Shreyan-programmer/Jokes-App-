@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokes App Made By Shreyan</title>
+</head>
+<body>
+    <h1>This website is made by Shreyan Biswas</h1>
+    <span class="note">(note) If word like Undefined comes just skip it and reload the page</span>
+    <ul class="list">
+        <li><span id="setup1"></span><br>   <span id="description1"></span></li> <br>
+        <li><span id="setup2"></span><br>   <span id="description2"></span></li><br>
+        <li><span id="setup3"></span><br>   <span id="description3"></span></li><br>
+        <li><span id="setup4"></span><br>   <span id="description4"></span></li><br>
+        <li><span id="setup5"></span><br>   <span id="description5"></span></li><br>
+       
+    </ul>
+    <button class="refresh" onclick="refresh()">Refresh</button>
+</body>
+<script>
+    fetch('https://v2.jokeapi.dev/joke/Pun,Spooky?blacklistFlags=sexist&amount=5')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('setup1').innerHTML = data.jokes[0].setup;
+            document.getElementById('setup2').innerHTML = data.jokes[1].setup;
+            document.getElementById('setup3').innerHTML = data.jokes[2].setup;
+            document.getElementById('setup4').innerHTML = data.jokes[3].setup;
+            document.getElementById('setup5').innerHTML = data.jokes[4].setup;
+            document.getElementById('description1').innerHTML = data.jokes[0].delivery;
+            document.getElementById('description2').innerHTML = data.jokes[1].delivery;
+            document.getElementById('description3').innerHTML = data.jokes[2].delivery;
+            document.getElementById('description4').innerHTML = data.jokes[3].delivery;
+            document.getElementById('description5').innerHTML = data.jokes[4].delivery;
+
+            
+        })
+
+        function refresh(){
+            location.reload();
+        }
+</script>
+</html>
